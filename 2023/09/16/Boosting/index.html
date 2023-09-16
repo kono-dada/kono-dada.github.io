@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dada的研究站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Boosting is a kind of Ensemble Learning, which iteratively and greedily add weak learners to the ensemble.A boosting model can be a weighted sum of weak learners:$$H_T(x)&#x3D;\sum^{T}_{t&#x3D;1}\alph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dada的研究站">
+<meta property="og:url" content="https://kono-dada.github.io/2023/09/16/Boosting/index.html">
+<meta property="og:site_name" content="dada的研究站">
+<meta property="og:description" content="Boosting is a kind of Ensemble Learning, which iteratively and greedily add weak learners to the ensemble.A boosting model can be a weighted sum of weak learners:$$H_T(x)&#x3D;\sum^{T}_{t&#x3D;1}\alph">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kono-dada.github.io/Pasted%20image%2020230913203232.png">
+<meta property="og:image" content="https://kono-dada.github.io/Pasted%20image%2020230914162734.png">
+<meta property="article:published_time" content="2023-09-16T04:43:11.806Z">
+<meta property="article:modified_time" content="2023-09-16T04:43:05.534Z">
+<meta property="article:author" content="dada">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kono-dada.github.io/Pasted%20image%2020230913203232.png">
+  
+    <link rel="alternate" href="/atom.xml" title="dada的研究站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dada的研究站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kono-dada.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Boosting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Boosting/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Boosting is a kind of <a href="./Ensemble%20Learning.md">Ensemble Learning</a>, which iteratively and greedily add weak learners to the ensemble.<br>A boosting model can be a weighted sum of weak learners:<br>$$<br>H_T(x)&#x3D;\sum^{T}_{t&#x3D;1}\alpha_th_t(x)<br>$$<br>Data which cause more error will be more weighted when fitting the next added weak learner. There are several ways to determine the weights of data.  </p>
+<h2 id="Gradient-boosting"><a href="#Gradient-boosting" class="headerlink" title="Gradient boosting"></a>Gradient boosting</h2><p>Let $l$ denote a loss function and write<br>$$<br>\mathcal L(H) &#x3D; \frac{1}{N} \sum^{N}<em>{i&#x3D;1}l(H(x_i),y</em>{i})<br>$$<br>Gradient boosting is similar to gradient descent. Instead of add the negative gradient to the parameters, it adds functions to the ensemble.<br>$$<br>\begin{align}<br>h_{i+1} &amp;&#x3D; {\arg\min}<em>{h,\alpha} \mathcal L(H</em>{i}+\alpha \cdot h)\<br>&amp;\approx {\arg\min}<em>{h,\alpha} \mathcal{L}(H)+\alpha\nabla\mathcal{L}(H)\cdot h\<br>&amp;&#x3D;{\arg\min}</em>{h,\alpha}alpha\nabla\mathcal{L}(H)\cdot h<br>\end{align}<br>$$<br>Sometimes we don’t optimize $\alpha$, so $h$ can be obtained by<br>$$<br>\begin{align}<br>h&amp;&#x3D;{\arg\min}<em>h\sum^{n}</em>{i&#x3D;1}\frac{\partial\mathcal{L}}{\partial[H(x_{i})]} h(x_i)<br>\end{align}<br>$$<br>The term $\frac{\partial\mathcal{L}}{\partial[H(x_{i})]}$ indicates the importance of the observed data $x_i$. For Gradient boosting, a common loss function is absolute loss $l(y,H(x))&#x3D;(y-H(x))^2$. With this loss function, data that brings more error needs linearly more attention when fitting the new learner $h$.<br>If we let $d_{i&#x3D;} -\frac{\partial\mathcal{L}}{\partial[H(x_{i})]}$, the vector $\boldsymbol{d}$ can also be viewed as a descent direction. Fitting $h$ is the process to find the vector $(h(x_1),…,h(x_n))$ nearest to the direction. I other words, $h$ is learning to predict $d$.<br><img src="/./Pasted%20image%2020230913203232.png" alt="Pasted image 20230913203232">  </p>
+<h2 id="AdaBoost-Adaptive-Boosting"><a href="#AdaBoost-Adaptive-Boosting" class="headerlink" title="AdaBoost (Adaptive Boosting)"></a>AdaBoost (Adaptive Boosting)</h2><p>AdaBoost uses the exponential loss<br>$$<br>\mathcal L(H)&#x3D;\sum^{N}<em>{i&#x3D;1}e^{-y_iH(x_i)}<br>$$<br>and learns $\alpha$ adaptively. The gradient is then $d_i&#x3D;-y_ie^{-y_iH(x_i)}$. For convenience, let $w_i&#x3D;\frac{e^{-y_iH(x_i)}}{\mathcal L(H)}$, which is the relative contribution of the overall loss. A miss-classified point by $H$ gets a larger weight.<br>Consider a binary classification problem, i.e., $y_i\in{-1,1}$, we have<br>$$<br>\begin{align}<br>h&amp;&#x3D;\arg \min_h \sum^{N}</em>{i&#x3D;1}d_ih(x_i)\<br>&amp;&#x3D;\arg\min_h-\sum^{N}<em>{i&#x3D;1}w_iy_ih(x_i)\<br>&amp;&#x3D;\arg\min_h \sum</em>{y_i\neq h(x_i)}w_i -\sum_{y_i&#x3D;h(x_i)}w_i\<br>&amp;&#x3D;\arg\min_h \sum_{y_i\neq h(x_i)}w_i<br>\end{align}<br>$$<br>The last equality holds because $\sum w_i&#x3D;1$.<br>Now given $h$, we find $\alpha&#x3D;\arg\min_\alpha \mathcal{L}(H+\alpha h)&#x3D;\arg\min_\alpha\sum e^{-y_i(H+\alpha h(x_i))}$.<br>Take derivative and equate it with $0$, finally we get<br>$$<br>\alpha &#x3D; \frac{1}{2}\ln \frac{1-\epsilon}{\epsilon}<br>$$<br>where $\epsilon&#x3D;\sum_{y_i\neq h(x_i)}w_i$. An intuitive interpretation is that if the best $h$ even makes mistakes weighting more than a half, the ensemble will take it away by subtracting $h$ from itself.<br><img src="/./Pasted%20image%2020230914162734.png" alt="Pasted image 20230914162734"><br>AdaBoost is mainly designed for binary classification and usually is utilized to boost the performance of decision tree.  </p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>reduces bias and a little variance. However, boosting too much will eventually increase variance. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Boosting/" data-id="clmljnhtv0003zcxf6sgg72pk" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/16/Bias-variance%20Trade-off/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/16/Ensemble%20Learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/16/Univariate%20Models/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Exchangeability/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Numerical%20Analysis/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Stacking/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 dada<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

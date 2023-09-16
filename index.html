@@ -73,46 +73,325 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Univariate Models" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/09/16/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-09-16T04:25:37.440Z" itemprop="datePublished">2023-09-16</time>
+    <a href="/2023/09/16/Univariate%20Models/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.838Z" itemprop="datePublished">2023-09-16</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/09/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>Basic models in <a href="./Bayesian%20Statistics.md">Bayesian Statistics</a>  </p>
+<h2 id="Bayesian-Estimators"><a href="#Bayesian-Estimators" class="headerlink" title="Bayesian Estimators"></a>Bayesian Estimators</h2><ul>
+<li><em>MAP</em>: The maximum a posterior estimator is the posterior mode of $\theta|y$, i.e, $\hat\theta_{MAP}&#x3D;\arg\max_{\theta}f(\theta |x)$.  </li>
+<li>The posterior mean is $\hat\theta &#x3D;\mathbb E[\theta |y]$.  </li>
+<li>The posterior median is $\hat\theta_{Med}&#x3D;\mathcal Q_{0.5}(\theta |y)$.</li>
+</ul>
+<h2 id="Credible-interval"><a href="#Credible-interval" class="headerlink" title="Credible interval"></a>Credible interval</h2><ul>
+<li><em>Equal-tailed (ET) Interval</em>: $(\theta_L,\theta_R)$ is called the $100% \times (1-\alpha)$ equal-tailed credible interval if $\mathbb P(\theta&lt;\theta_L|y)&#x3D;\mathbb P(\theta &gt;\theta_{R}|y)&#x3D; \frac{\alpha}{2}$.  </li>
+<li><em>Highest posterior density (HPD) region</em>: $s(y)$ is a $1-\alpha$ HPD if  <ul>
+<li>$\mathbb P(\theta\in s(y)|y)&#x3D;1-\alpha$  </li>
+<li>If $\theta_{a}\in s(y)$ and $\theta_{b}\not\in s(y)$, then $p(\theta_{a}|y)&gt;p(\theta_{b}|y)$.<br>  <img src="/./Pasted%20image%2020230915165417.png" alt="Pasted image 20230915165417"></li>
+</ul>
+</li>
+</ul>
+<h2 id="Conjugate-Prior"><a href="#Conjugate-Prior" class="headerlink" title="Conjugate Prior"></a>Conjugate Prior</h2><p>If $\mathcal F$ is a class of sampling distributions $p(y|\theta)$, and $\mathcal P$ is a class of prior distributions for $\theta$, then $\mathcal P$ is conjugate for $\mathcal F$ if<br>$$<br>p(\theta |y)\in\mathcal P \text{ for all }p(y|\theta )\in\mathcal F\text{ and }p(\theta )\in\mathcal P<br>$$  </p>
+<h2 id="Binomial-Model"><a href="#Binomial-Model" class="headerlink" title="Binomial Model"></a>Binomial Model</h2><p>A Bayesian model of the process of repeated Bernoulli experiments. The conjugate prior distribution for the binomial model is Beta distribution.  </p>
+<h4 id="Beta-distribution"><a href="#Beta-distribution" class="headerlink" title="Beta distribution"></a>Beta distribution</h4><blockquote>
+<p>Suppose $\theta\sim Beta(\alpha, \beta)$, The PDF of $\theta$ is<br>$$p(\theta)&#x3D; \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^ {\alpha-1}(1-\theta)^{\beta-1}$$<br>for $0\le\theta\le 1$.  </p>
+</blockquote>
+<ul>
+<li>$\mathbb E[\theta ]&#x3D; \frac{\alpha}{\alpha+\beta}$  </li>
+<li>$Var[\theta ]&#x3D; \frac{\alpha\beta}{(\alpha+\beta+1)(\alpha+\beta)^{2}}$  </li>
+<li>$Mode[\theta]&#x3D; \frac{\alpha-1}{\alpha+\beta-2}$</li>
+</ul>
+<h4 id="Posterior"><a href="#Posterior" class="headerlink" title="Posterior"></a>Posterior</h4><p>Suppose a Bernoulli experiment with parameter $\theta$ generates i.i.d samples $y_1,…,y_n$ that $\sum y_i&#x3D;k$, then $p(y_1,…,y_n|\theta)&#x3D;\theta^k(1-\theta)^{n-k}$. The posterior distribution will be<br>$$<br>p(\theta|y_1,…,y_{n})\propto\theta^k(1-\theta)^{n-k}p(\theta)<br>$$<br>If the prior $\theta\sim Beta(\alpha,\beta )$ distribution, the posterior will also be Beta distribution, i.e.,<br>$$<br>\theta|y_1,…,y_{n} \sim Beta(\alpha +k, \beta +n-k)<br>$$  </p>
+<h2 id="Poisson-Model"><a href="#Poisson-Model" class="headerlink" title="Poisson Model"></a>Poisson Model</h2><h4 id="Poisson-distribution"><a href="#Poisson-distribution" class="headerlink" title="Poisson distribution"></a>Poisson distribution</h4><blockquote>
+<p>If $Y\sim Poi(\theta)$, then<br>$$\mathbb P(Y&#x3D;y|\theta)&#x3D; \frac{\theta^ye^{-\theta}}{y!}$$  </p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kono-dada.github.io/2023/09/16/hello-world/" data-id="clmlje3kh0000icxfcyhm7kzw" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://kono-dada.github.io/2023/09/16/Univariate%20Models/" data-id="clmljnhty0009zcxfhrogbqqd" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Exchangeability" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Exchangeability/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.822Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>A basic concept in <a href="./Bayesian%20Statistics.md">Bayesian Statistics</a>  </p>
+<h4 id="Exchangeable"><a href="#Exchangeable" class="headerlink" title="Exchangeable"></a>Exchangeable</h4><p>Let $p(y_1,…,y_n)$ be the joint density of $Y_1,…,Y_n$. If $p(y_1,…,y_n)&#x3D;p(y_{\pi_1},…,y_{\pi_n})$ for all permutations $\pi$ of ${1,…,n}$, then $Y_1,…,Y_n$ are exchangeable.  </p>
+<h4 id="de-Finetti’s-Theorem"><a href="#de-Finetti’s-Theorem" class="headerlink" title="de Finetti’s Theorem"></a>de Finetti’s Theorem</h4><p>The model can be written as<br>$$<br>P(y_1,…,y_{n})&#x3D;\int \left{\prod_{i&#x3D;1}^{n}p(y_i|\theta) \right}p(\theta)d\theta<br>$$<br>for some parameter $\theta$ if $Y_i$ are exchangeable.   </p>
+<ul>
+<li>$p(\theta)$ represents our beliefs about $\lim_{n\rightarrow\infty}\sum Y_i&#x2F;n$ in the binary case.  </li>
+<li>$p(\theta)$ represents our beliefs about $\lim_{n\rightarrow\infty}\sum(Y_{i}\le c)&#x2F;n$ for each $c$ in the general case.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Exchangeability/" data-id="clmljnhtw0006zcxf43cmgxrh" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mixture of Experts (MoE)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.822Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Mixture%20of%20Experts%20(MoE)/" data-id="clmljnhtw0007zcxf5rgrhlfp" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Numerical Analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Numerical%20Analysis/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.822Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a href="./Errors.md">Errors</a> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Numerical%20Analysis/" data-id="clmljnhtx0008zcxf81md9khl" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Stacking" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Stacking/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.822Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Stacking/" data-id="clmljnhty000azcxf3lqqglvr" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Bagging (Bootstrap aggregating)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Bagging%20(Bootstrap%20aggregating)/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Bagging is a kind of <a href="./Ensemble%20Learning.md">Ensemble Learning</a>, which is designed to improve the stability and accuracy. It reduces the <strong>variance</strong> of the prediction while retaining the bias.<br>Given a standard traning set $D$, bagging generates $m$ new training sets $D_i$ by sampling from $D$ uniformly and with replacement. Sampling with replacement ensures each bootstrap is independent from its peers. Then, $m$ models are fitted using the above $m$ bootstrap samples and combined by averaging the output (for regression) or voting (for) classification.<img src="/./Pasted%20image%2020230913151401.png" alt="Pasted image 20230913151401"><br>After bagging, $m$ weak learners are combined into a strong learner.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Bagging%20(Bootstrap%20aggregating)/" data-id="clmljnhtn0000zcxf68iaej3u" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Bayesian Statistics" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Bayesian%20Statistics/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Bayesian%20Statistics/" data-id="clmljnhtt0001zcxf55ze58re" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Bias-variance Trade-off" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Bias-variance%20Trade-off/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Suppose we have a training set $D&#x3D;{x_1,…,x_n}$ and real values $y_i$ associated with each point $x_i$. We assume that there is a function such as $y&#x3D;f(x)+\varepsilon$, where the noise $\varepsilon\sim N(0,\sigma^2)$.<br>A function $\hat f(x;D)$ is needed to approximate the true function $f(x)$. A goal of machine learning is to minimize the expected error<br>$$<br>\begin{align}<br>\mathbb{E}<em>{x,D,\varepsilon}[(y-\hat f(x;D))^{2}] &amp;&#x3D; \mathbb{E}</em>{x,D,\varepsilon}[(y- f(x)+ f(x;D)-\hat f(x))^{2}]\<br>&amp;&#x3D;\mathbb{E}<em>{x,D,\varepsilon}[(y-f(x))^2]+\mathbb{E}</em>{x,D}[(f(x)-\hat f(x;D))^{2}]\<br>&amp;&#x3D;\mathbb{E}<em>{x,D,\varepsilon}[(y-f(x))^2]+\mathbb{E}</em>{x,D}[(f(x)- \bar f(x)+\bar f(x)-\hat f(x;D))^{2}]\<br>&amp;&#x3D;\mathbb{E}<em>{x,D,\varepsilon}[(y-f(x))^2]+\mathbb{E}</em>{x}[(f(x)- \bar f(x))^2]+\mathbb{E}_{x,D}[(\bar f(x)-\hat f(x;D))^{2}]\<br>&amp;&#x3D;\text{noise} + \text{bias} + \text{variance}<br>\end{align}<br>$$  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Bias-variance%20Trade-off/" data-id="clmljnhtu0002zcxfgg3la79z" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Boosting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Boosting/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Boosting is a kind of <a href="./Ensemble%20Learning.md">Ensemble Learning</a>, which iteratively and greedily add weak learners to the ensemble.<br>A boosting model can be a weighted sum of weak learners:<br>$$<br>H_T(x)&#x3D;\sum^{T}_{t&#x3D;1}\alpha_th_t(x)<br>$$<br>Data which cause more error will be more weighted when fitting the next added weak learner. There are several ways to determine the weights of data.  </p>
+<h2 id="Gradient-boosting"><a href="#Gradient-boosting" class="headerlink" title="Gradient boosting"></a>Gradient boosting</h2><p>Let $l$ denote a loss function and write<br>$$<br>\mathcal L(H) &#x3D; \frac{1}{N} \sum^{N}<em>{i&#x3D;1}l(H(x_i),y</em>{i})<br>$$<br>Gradient boosting is similar to gradient descent. Instead of add the negative gradient to the parameters, it adds functions to the ensemble.<br>$$<br>\begin{align}<br>h_{i+1} &amp;&#x3D; {\arg\min}<em>{h,\alpha} \mathcal L(H</em>{i}+\alpha \cdot h)\<br>&amp;\approx {\arg\min}<em>{h,\alpha} \mathcal{L}(H)+\alpha\nabla\mathcal{L}(H)\cdot h\<br>&amp;&#x3D;{\arg\min}</em>{h,\alpha}alpha\nabla\mathcal{L}(H)\cdot h<br>\end{align}<br>$$<br>Sometimes we don’t optimize $\alpha$, so $h$ can be obtained by<br>$$<br>\begin{align}<br>h&amp;&#x3D;{\arg\min}<em>h\sum^{n}</em>{i&#x3D;1}\frac{\partial\mathcal{L}}{\partial[H(x_{i})]} h(x_i)<br>\end{align}<br>$$<br>The term $\frac{\partial\mathcal{L}}{\partial[H(x_{i})]}$ indicates the importance of the observed data $x_i$. For Gradient boosting, a common loss function is absolute loss $l(y,H(x))&#x3D;(y-H(x))^2$. With this loss function, data that brings more error needs linearly more attention when fitting the new learner $h$.<br>If we let $d_{i&#x3D;} -\frac{\partial\mathcal{L}}{\partial[H(x_{i})]}$, the vector $\boldsymbol{d}$ can also be viewed as a descent direction. Fitting $h$ is the process to find the vector $(h(x_1),…,h(x_n))$ nearest to the direction. I other words, $h$ is learning to predict $d$.<br><img src="/./Pasted%20image%2020230913203232.png" alt="Pasted image 20230913203232">  </p>
+<h2 id="AdaBoost-Adaptive-Boosting"><a href="#AdaBoost-Adaptive-Boosting" class="headerlink" title="AdaBoost (Adaptive Boosting)"></a>AdaBoost (Adaptive Boosting)</h2><p>AdaBoost uses the exponential loss<br>$$<br>\mathcal L(H)&#x3D;\sum^{N}<em>{i&#x3D;1}e^{-y_iH(x_i)}<br>$$<br>and learns $\alpha$ adaptively. The gradient is then $d_i&#x3D;-y_ie^{-y_iH(x_i)}$. For convenience, let $w_i&#x3D;\frac{e^{-y_iH(x_i)}}{\mathcal L(H)}$, which is the relative contribution of the overall loss. A miss-classified point by $H$ gets a larger weight.<br>Consider a binary classification problem, i.e., $y_i\in{-1,1}$, we have<br>$$<br>\begin{align}<br>h&amp;&#x3D;\arg \min_h \sum^{N}</em>{i&#x3D;1}d_ih(x_i)\<br>&amp;&#x3D;\arg\min_h-\sum^{N}<em>{i&#x3D;1}w_iy_ih(x_i)\<br>&amp;&#x3D;\arg\min_h \sum</em>{y_i\neq h(x_i)}w_i -\sum_{y_i&#x3D;h(x_i)}w_i\<br>&amp;&#x3D;\arg\min_h \sum_{y_i\neq h(x_i)}w_i<br>\end{align}<br>$$<br>The last equality holds because $\sum w_i&#x3D;1$.<br>Now given $h$, we find $\alpha&#x3D;\arg\min_\alpha \mathcal{L}(H+\alpha h)&#x3D;\arg\min_\alpha\sum e^{-y_i(H+\alpha h(x_i))}$.<br>Take derivative and equate it with $0$, finally we get<br>$$<br>\alpha &#x3D; \frac{1}{2}\ln \frac{1-\epsilon}{\epsilon}<br>$$<br>where $\epsilon&#x3D;\sum_{y_i\neq h(x_i)}w_i$. An intuitive interpretation is that if the best $h$ even makes mistakes weighting more than a half, the ensemble will take it away by subtracting $h$ from itself.<br><img src="/./Pasted%20image%2020230914162734.png" alt="Pasted image 20230914162734"><br>AdaBoost is mainly designed for binary classification and usually is utilized to boost the performance of decision tree.  </p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>reduces bias and a little variance. However, boosting too much will eventually increase variance. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Boosting/" data-id="clmljnhtv0003zcxf6sgg72pk" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Ensemble Learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Ensemble%20Learning/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>Weak learner: a learner that performs ralatively poorly – its accuracy is above chance.  </li>
+<li>Strong learner: a learner that achieves arbitarily good performance, much better than random guessing.<br>Ensemble learning combines weak learners into a strong learner, i.e., a learner with lower expected error. The expected error can are introduced in <a href="./Bias-variance%20Trade-off.md">Bias-variance Trade-off</a>.<br>There are several types of ensemble learning.  </li>
+<li><a href="./Bagging%20(Bootstrap%20aggregating).md">Bagging (Bootstrap aggregating)</a>  </li>
+<li><a href="./Boosting.md">Boosting</a>  </li>
+<li><a href="./Stacking.md">Stacking</a>  </li>
+<li><a href="./Mixture%20of%20Experts%20(MoE).md">Mixture of Experts (MoE)</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Ensemble%20Learning/" data-id="clmljnhtv0004zcxf70ax0toc" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -125,6 +404,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -155,7 +439,23 @@
       <ul>
         
           <li>
-            <a href="/2023/09/16/hello-world/">Hello World</a>
+            <a href="/2023/09/16/Univariate%20Models/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Exchangeability/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Numerical%20Analysis/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Stacking/">(no title)</a>
           </li>
         
       </ul>

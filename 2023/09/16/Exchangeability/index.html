@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dada的研究站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A basic concept in Bayesian Statistics   ExchangeableLet $p(y_1,…,y_n)$ be the joint density of $Y_1,…,Y_n$. If $p(y_1,…,y_n)&#x3D;p(y_{\pi_1},…,y_{\pi_n})$ for all permutations $\pi$ of ${1,…,n}$, th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dada的研究站">
+<meta property="og:url" content="https://kono-dada.github.io/2023/09/16/Exchangeability/index.html">
+<meta property="og:site_name" content="dada的研究站">
+<meta property="og:description" content="A basic concept in Bayesian Statistics   ExchangeableLet $p(y_1,…,y_n)$ be the joint density of $Y_1,…,Y_n$. If $p(y_1,…,y_n)&#x3D;p(y_{\pi_1},…,y_{\pi_n})$ for all permutations $\pi$ of ${1,…,n}$, th">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-16T04:43:11.822Z">
+<meta property="article:modified_time" content="2023-09-16T04:43:05.534Z">
+<meta property="article:author" content="dada">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dada的研究站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dada的研究站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kono-dada.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Exchangeability" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Exchangeability/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.822Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>A basic concept in <a href="./Bayesian%20Statistics.md">Bayesian Statistics</a>  </p>
+<h4 id="Exchangeable"><a href="#Exchangeable" class="headerlink" title="Exchangeable"></a>Exchangeable</h4><p>Let $p(y_1,…,y_n)$ be the joint density of $Y_1,…,Y_n$. If $p(y_1,…,y_n)&#x3D;p(y_{\pi_1},…,y_{\pi_n})$ for all permutations $\pi$ of ${1,…,n}$, then $Y_1,…,Y_n$ are exchangeable.  </p>
+<h4 id="de-Finetti’s-Theorem"><a href="#de-Finetti’s-Theorem" class="headerlink" title="de Finetti’s Theorem"></a>de Finetti’s Theorem</h4><p>The model can be written as<br>$$<br>P(y_1,…,y_{n})&#x3D;\int \left{\prod_{i&#x3D;1}^{n}p(y_i|\theta) \right}p(\theta)d\theta<br>$$<br>for some parameter $\theta$ if $Y_i$ are exchangeable.   </p>
+<ul>
+<li>$p(\theta)$ represents our beliefs about $\lim_{n\rightarrow\infty}\sum Y_i&#x2F;n$ in the binary case.  </li>
+<li>$p(\theta)$ represents our beliefs about $\lim_{n\rightarrow\infty}\sum(Y_{i}\le c)&#x2F;n$ for each $c$ in the general case.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Exchangeability/" data-id="clmljnhtw0006zcxf43cmgxrh" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/16/Univariate%20Models/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/16/Univariate%20Models/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Exchangeability/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Numerical%20Analysis/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Stacking/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 dada<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dada的研究站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="dada的研究站">
+<meta property="og:url" content="https://kono-dada.github.io/page/2/index.html">
+<meta property="og:site_name" content="dada的研究站">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="dada">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dada的研究站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dada的研究站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kono-dada.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Errors" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Errors/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.806Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Data-Error-and-Computational-Error"><a href="#Data-Error-and-Computational-Error" class="headerlink" title="Data Error and Computational Error"></a>Data Error and Computational Error</h2><h2 id="Truncation-Error-and-Rounding-Error"><a href="#Truncation-Error-and-Rounding-Error" class="headerlink" title="Truncation Error and Rounding Error"></a>Truncation Error and Rounding Error</h2><h2 id="Forward-and-Backward-Error"><a href="#Forward-and-Backward-Error" class="headerlink" title="Forward and Backward Error"></a>Forward and Backward Error</h2><p>Suppose we want to compute $y&#x3D;f(x)$, but we can only obtain an approximate value $\hat y$.  </p>
+<ul>
+<li>Forward error: $\Delta y &#x3D; \hat y-y$.  </li>
+<li>Backward error: $\Delta x &#x3D; f^{-1}(\hat y)-x$.</li>
+</ul>
+<h4 id="An-linear-system-as-an-example"><a href="#An-linear-system-as-an-example" class="headerlink" title="An linear system as an example"></a>An linear system as an example</h4><p>$$<br>y&#x3D;A^{-1}b&#x3D;f(b)<br>$$<br>Assume we have an approximate $\hat y$. Then  </p>
+<ul>
+<li>Forward error: $|\hat y-y|$, hard to estimate if true value $y$ cannot be approximate.  </li>
+<li>Backward error: $|\hat b-b|&#x3D;|A\hat y-b|$, &#x3D;&#x3D;easy to estimate&#x3D;&#x3D;.<br><img src="/./Pasted%20image%2020230914162441.jpg" alt="Pasted image 20230914162441"></li>
+</ul>
+<h2 id="Sensitivity-and-Conditioning"><a href="#Sensitivity-and-Conditioning" class="headerlink" title="Sensitivity and Conditioning"></a>Sensitivity and Conditioning</h2><p>Condition number:<br>$$<br>Cond&#x3D;\frac{|\text{relative change in solution}|}{|\text{relative change in input data}|}&#x3D;\frac{|\Delta y&#x2F;y|}{|\Delta x&#x2F;x|}<br>$$<br>$$<br>|\text{relative forward error}|&lt;\approx Cond\cdot|\text{relative backward error}|<br>$$  </p>
+<h2 id="Stability"><a href="#Stability" class="headerlink" title="Stability"></a>Stability</h2><p>$\hat f$ is called stable if<br>$$<br>\frac{||\hat f(x)-f(\hat x)||}{||f(x)||}&#x3D;O(\varepsilon_\text{mach})<br>$$<br>for some $\hat x$ with $\frac{||\hat x-x||}{||x||}&#x3D;O(\varepsilon_\text{mach} )$.  </p>
+<h4 id="Example-of-subtraction"><a href="#Example-of-subtraction" class="headerlink" title="Example of subtraction"></a>Example of subtraction</h4><p>Consider $f(X,y)&#x3D;x-y$ and the algorithm:<br>$$<br>\hat f(x,y)&#x3D;x\circ y&#x3D;fl(fl(x)-fl(y))<br>$$<br>We have $\hat f(x,y)&#x3D;(1+\varepsilon_3)[(1+\varepsilon_1)x-(1+\varepsilon_{2})y]&#x3D;(1+\varepsilon_4)x-(1+\varepsilon_5)y$, where $\varepsilon_{4}, \varepsilon_{5}&#x3D;O(\varepsilon_\text{mach})$.<br>Denote $\hat x&#x3D;(1+\varepsilon_{4})x$ and so does $\hat y$, then<br>$$<br>\begin{align*}<br>\frac{||\hat f(x,y)-f(\hat x,\hat y)||}{||f(x,y)||}&amp;&#x3D; 0<br>\end{align*}<br>$$<br>While $\frac{||(\hat x,\hat y)-(x,y)||}{||(x,y)||}&#x3D;\sqrt{\varepsilon_4^2+\varepsilon_5^2}&#x3D;O(\varepsilon_\text{mach})$. Hence, subtraction is stable. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Errors/" data-id="clmljnhtw0005zcxf0opjh8kb" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/16/Univariate%20Models/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Exchangeability/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Numerical%20Analysis/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Stacking/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 dada<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dada的研究站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Basic models in Bayesian Statistics   Bayesian Estimators MAP: The maximum a posterior estimator is the posterior mode of $\theta|y$, i.e, $\hat\theta_{MAP}&#x3D;\arg\max_{\theta}f(\theta |x)$.   The">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dada的研究站">
+<meta property="og:url" content="https://kono-dada.github.io/2023/09/16/Univariate%20Models/index.html">
+<meta property="og:site_name" content="dada的研究站">
+<meta property="og:description" content="Basic models in Bayesian Statistics   Bayesian Estimators MAP: The maximum a posterior estimator is the posterior mode of $\theta|y$, i.e, $\hat\theta_{MAP}&#x3D;\arg\max_{\theta}f(\theta |x)$.   The">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kono-dada.github.io/Pasted%20image%2020230915165417.png">
+<meta property="article:published_time" content="2023-09-16T04:43:11.838Z">
+<meta property="article:modified_time" content="2023-09-16T04:43:05.550Z">
+<meta property="article:author" content="dada">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kono-dada.github.io/Pasted%20image%2020230915165417.png">
+  
+    <link rel="alternate" href="/atom.xml" title="dada的研究站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dada的研究站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kono-dada.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Univariate Models" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/16/Univariate%20Models/" class="article-date">
+  <time class="dt-published" datetime="2023-09-16T04:43:11.838Z" itemprop="datePublished">2023-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Basic models in <a href="./Bayesian%20Statistics.md">Bayesian Statistics</a>  </p>
+<h2 id="Bayesian-Estimators"><a href="#Bayesian-Estimators" class="headerlink" title="Bayesian Estimators"></a>Bayesian Estimators</h2><ul>
+<li><em>MAP</em>: The maximum a posterior estimator is the posterior mode of $\theta|y$, i.e, $\hat\theta_{MAP}&#x3D;\arg\max_{\theta}f(\theta |x)$.  </li>
+<li>The posterior mean is $\hat\theta &#x3D;\mathbb E[\theta |y]$.  </li>
+<li>The posterior median is $\hat\theta_{Med}&#x3D;\mathcal Q_{0.5}(\theta |y)$.</li>
+</ul>
+<h2 id="Credible-interval"><a href="#Credible-interval" class="headerlink" title="Credible interval"></a>Credible interval</h2><ul>
+<li><em>Equal-tailed (ET) Interval</em>: $(\theta_L,\theta_R)$ is called the $100% \times (1-\alpha)$ equal-tailed credible interval if $\mathbb P(\theta&lt;\theta_L|y)&#x3D;\mathbb P(\theta &gt;\theta_{R}|y)&#x3D; \frac{\alpha}{2}$.  </li>
+<li><em>Highest posterior density (HPD) region</em>: $s(y)$ is a $1-\alpha$ HPD if  <ul>
+<li>$\mathbb P(\theta\in s(y)|y)&#x3D;1-\alpha$  </li>
+<li>If $\theta_{a}\in s(y)$ and $\theta_{b}\not\in s(y)$, then $p(\theta_{a}|y)&gt;p(\theta_{b}|y)$.<br>  <img src="/./Pasted%20image%2020230915165417.png" alt="Pasted image 20230915165417"></li>
+</ul>
+</li>
+</ul>
+<h2 id="Conjugate-Prior"><a href="#Conjugate-Prior" class="headerlink" title="Conjugate Prior"></a>Conjugate Prior</h2><p>If $\mathcal F$ is a class of sampling distributions $p(y|\theta)$, and $\mathcal P$ is a class of prior distributions for $\theta$, then $\mathcal P$ is conjugate for $\mathcal F$ if<br>$$<br>p(\theta |y)\in\mathcal P \text{ for all }p(y|\theta )\in\mathcal F\text{ and }p(\theta )\in\mathcal P<br>$$  </p>
+<h2 id="Binomial-Model"><a href="#Binomial-Model" class="headerlink" title="Binomial Model"></a>Binomial Model</h2><p>A Bayesian model of the process of repeated Bernoulli experiments. The conjugate prior distribution for the binomial model is Beta distribution.  </p>
+<h4 id="Beta-distribution"><a href="#Beta-distribution" class="headerlink" title="Beta distribution"></a>Beta distribution</h4><blockquote>
+<p>Suppose $\theta\sim Beta(\alpha, \beta)$, The PDF of $\theta$ is<br>$$p(\theta)&#x3D; \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^ {\alpha-1}(1-\theta)^{\beta-1}$$<br>for $0\le\theta\le 1$.  </p>
+</blockquote>
+<ul>
+<li>$\mathbb E[\theta ]&#x3D; \frac{\alpha}{\alpha+\beta}$  </li>
+<li>$Var[\theta ]&#x3D; \frac{\alpha\beta}{(\alpha+\beta+1)(\alpha+\beta)^{2}}$  </li>
+<li>$Mode[\theta]&#x3D; \frac{\alpha-1}{\alpha+\beta-2}$</li>
+</ul>
+<h4 id="Posterior"><a href="#Posterior" class="headerlink" title="Posterior"></a>Posterior</h4><p>Suppose a Bernoulli experiment with parameter $\theta$ generates i.i.d samples $y_1,…,y_n$ that $\sum y_i&#x3D;k$, then $p(y_1,…,y_n|\theta)&#x3D;\theta^k(1-\theta)^{n-k}$. The posterior distribution will be<br>$$<br>p(\theta|y_1,…,y_{n})\propto\theta^k(1-\theta)^{n-k}p(\theta)<br>$$<br>If the prior $\theta\sim Beta(\alpha,\beta )$ distribution, the posterior will also be Beta distribution, i.e.,<br>$$<br>\theta|y_1,…,y_{n} \sim Beta(\alpha +k, \beta +n-k)<br>$$  </p>
+<h2 id="Poisson-Model"><a href="#Poisson-Model" class="headerlink" title="Poisson Model"></a>Poisson Model</h2><h4 id="Poisson-distribution"><a href="#Poisson-distribution" class="headerlink" title="Poisson distribution"></a>Poisson distribution</h4><blockquote>
+<p>If $Y\sim Poi(\theta)$, then<br>$$\mathbb P(Y&#x3D;y|\theta)&#x3D; \frac{\theta^ye^{-\theta}}{y!}$$  </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kono-dada.github.io/2023/09/16/Univariate%20Models/" data-id="clmljnhty0009zcxfhrogbqqd" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/09/16/Exchangeability/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/16/Univariate%20Models/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Exchangeability/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Mixture%20of%20Experts%20(MoE)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Numerical%20Analysis/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/16/Stacking/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 dada<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
